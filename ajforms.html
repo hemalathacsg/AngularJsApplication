@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js" integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="ajforms.js"></script>
+    <title>Document</title>
+</head>
+<body ng-controller="myController">
+   <div class="">
+        <form name="myForm">
+            <h1>Angularjs Validation</h1>
+            <label>Full Name</label><br>
+            <input type="text" name="name" ng-model="name" required maxlength="30" minlength="3">
+            <br><br><br>
+            <label>Email</label><br>
+            <input type="email" required>
+           
+                <span ng-show="myForm.email.$error.required">Email is required</span>
+                <span ng-show="myForm.email.$error.email">Invalid email</span>
+           
+            <br> <br> <br>Select ur gender
+           <label>
+                <input type="radio" ng-model="gender" value="male">Male 
+            </label>
+            <label>
+                <input type="radio" ng-model="gender" value="female">Fmelae 
+            </label><br> <br> <br>
+            Date Of Birth
+            <input type="date" name="date" ng-model="date"><br> <br> <br>
+            Address <br> 
+            <input type="text" name="address" ng-model="address"><br> <br> <br>
+            Phone Number:
+            <input type="tel" name="Phone" ng-model="mobileno"><br> <br> <br>
+            Course
+            <select name="selectcourse" ng-model="selectedCourse" ng-options="course.name for course in coursedetails">
+                <option value="">Please select ...</option>
+            </select>
+            <button type="submit">submit</button>
+        </form>
+   </div>
+</body>
+</html>

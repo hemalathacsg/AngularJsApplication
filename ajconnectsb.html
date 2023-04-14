@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Connecting AngularJs with Springboot</title>
+    <link rel="stylesheet" href="ajconnectsb.css">
+</head>
+
+<body ng-controller="myController">
+    <h1>data</h1>
+    <button ng-click="addclick()">add employee</button>
+    Search: <input type="text" >
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Phone No</th>
+                <th>Designation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="emp in employees">
+                <td>{{emp.id}}</td>
+                <td>{{emp.empname}}</td>
+                <td>{{emp.location}}</td>
+                <td>{{emp.mobileno}}</td>
+                <td>{{emp.designation}}</td>
+                <td>
+                    <button ng-click="updateclick(emp.id)">update</button>
+                    <button ng-click="deleteclick(emp.id)">delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table><br>
+===============================================================
+    <!-- <div ng-repeat="emp in employees">
+        emp  id:{{emp.id}} <br>
+        emp name:{{emp.empname}} <br>
+        emp location: {{emp.location}} <br>
+        emp mobile number:{{emp.mobileno}} <br>
+        emp designation: {{emp.designation}} <br><br>
+    </div>
+    {{employees[0].empname}} -->
+    <span ng-bind="message"></span>
+</body>
+
+<script src="ajconnectsb.js"></script>
+</body>
+
+</html>
