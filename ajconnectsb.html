@@ -12,7 +12,7 @@
 
 <body ng-controller="myController">
     <h1>data</h1>
-    <button ng-click="toggleForm1()">add employee</button>
+    <button ng-click="toggleForm1()">add employee</button><br><br>
     <!-- Search: <input type="text"><br><br> -->
     <div>
         <form name="empForm" ng-submit="addEmp(emp)" novalidate ng-show="addEmpForm">
@@ -37,7 +37,7 @@
 
     </div>
     <div>
-        <form name="updateEmpForm" ng-submit="updateEmp(selectedEmp)" ng-show="myVar">
+        <form name="updateEmpForm" ng-submit="updateEmp(selectedEmp)" ng-show="myVar" id="myForm">
             <label>
                 Id:
                 <input type="number" name="empId" ng-model="selectedEmp.id" ng-required="updateEmpForm.$visible">
@@ -48,17 +48,20 @@
             </label> <br><br>
             <label>
                 Location:
-                <input type="text" name="empLocation" ng-model="selectedEmp.location" ng-required="updateEmpForm.$visible">
+                <input type="text" name="empLocation" ng-model="selectedEmp.location"
+                    ng-required="updateEmpForm.$visible">
             </label> <br><br>
             <label>
                 Mobile No:
-                <input type="number" name="empMobile" ng-model="selectedEmp.mobileno" ng-required="updateEmpForm.$visible">
+                <input type="number" name="empMobile" ng-model="selectedEmp.mobileno"
+                    ng-required="updateEmpForm.$visible">
             </label> <br><br>
             <label>
                 Designation:
-                <input type="text" name="empDesignation" ng-model="selectedEmp.designation" ng-required="updateEmpForm.$visible">
+                <input type="text" name="empDesignation" ng-model="selectedEmp.designation"
+                    ng-required="updateEmpForm.$visible">
             </label> <br><br>
-            <button type="submit" ng-click="toggleForm2(emp)">Update</button>
+            <button type="submit" id="submitBtn">Update</button>
 
         </form>
     </div>

@@ -30,35 +30,47 @@ var myApp = angular.module("myModule", [])
             });
         };
 
-    
-        $scope.toggleForm2=function(emp){
+       //update employee details
+        $scope.toggleForm2 = function(emp) {
+            console.log("toggleForm2 function started");
             console.log(emp);
-            $scope.myVar=!$scope.myVar;
-            var selectedEmp={  // uncomment this line
-                id:"",
-                empName:"",
-                location:"",
-                mobileno:"",
-                designation:""
-            } // uncomment this line
-            $scope.selectedEmp=angular.copy(emp);
-            console.log(emp);
-            console.log(selectedEmp); // you can now log selectedEmp to the console
-        }
+            $scope.myVar = !$scope.myVar;
+            $scope.selectedEmp = {
+                id: "",
+                empname: "",
+                location: "",
+                mobileno: "",
+                designation: ""
+            };
+            angular.copy(emp, $scope.selectedEmp);
+            
+            console.log($scope.selectedEmp);
+            console.log("toggleForm2 function ended");
+        };
+        
         
 
-        $scope.updateEmp = function (empdata) {
-            console.log(empdata);
-            $http.put('http://localhost:8080/updateEmp/' + empdata.id, empdata, {
+        $scope.updateEmp = function (selectedEmp) {
+            console.log("updateEmp method entered");
+            console.log("emp details below");
+            console.log(selectedEmp);
+            $http.put('http://localhost:8080/updateEmp/' + selectedEmp.id, selectedEmp, {
                 withCredentials: true
             }).then(function (response) {
+                console.log("updateEmp method successfull");
                 console.log(response);
                 getAllEmployees();
                 $scope.selectedEmp = null;
+                console.log("updateEmp method ended");
             }, function (error) {
                 console.log(error);
+                console.log("updateEmp method ended");
             });
         }
+        document.getElementById("submitBtn").addEventListener("click", function() {
+            document.getElementById("myForm").style.display = "none";
+          });
+          
         
         //add an employee
        $scope.addEmpForm=false;
