@@ -1,5 +1,10 @@
 var myApp=angular.module("myModule",[])
                     .controller("myController",function($scope){
+                        $scope.myVar = false;
+    
+                        $scope.toggleForm = function() {
+                          $scope.myVar = !$scope.myVar;
+                        };
                         var message="successfull message";
                         $scope.message=message;
                         var coursedetails=[{name:"java"},

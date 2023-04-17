@@ -12,8 +12,58 @@
 
 <body ng-controller="myController">
     <h1>data</h1>
-    <button ng-click="addclick()">add employee</button>
-    Search: <input type="text" >
+    <button ng-click="toggleForm1()">add employee</button>
+    <!-- Search: <input type="text"><br><br> -->
+    <div>
+        <form name="empForm" ng-submit="addEmp(emp)" novalidate ng-show="addEmpForm">
+            <label>
+                Name:
+                <input type="text" name="empName" ng-model="emp.empname" ng-required="empForm.$visible">
+            </label><br><br>
+            <label>
+                Location:
+                <input type="text" name="empLocation" ng-model="emp.location" ng-required="empForm.$visible">
+            </label><br><br>
+            <label>
+                Mobile No:
+                <input type="number" name="empMobile" ng-model="emp.mobileno" ng-required="empForm.$visible">
+            </label><br><br>
+            <label>
+                Designation:
+                <input type="text" name="empDesignation" ng-model="emp.designation" ng-required="empForm.$visible">
+            </label><br><br>
+            <button type="submit" ng-click="toggleForm1()">Submit</button>
+        </form>
+
+    </div>
+    <div>
+        <form name="updateEmpForm" ng-submit="updateEmp(selectedEmp)" ng-show="myVar">
+            <label>
+                Id:
+                <input type="number" name="empId" ng-model="selectedEmp.id" ng-required="updateEmpForm.$visible">
+            </label>
+            <label>
+                Name:
+                <input type="text" name="empName" ng-model="selectedEmp.empname" ng-required="updateEmpForm.$visible">
+            </label> <br><br>
+            <label>
+                Location:
+                <input type="text" name="empLocation" ng-model="selectedEmp.location" ng-required="updateEmpForm.$visible">
+            </label> <br><br>
+            <label>
+                Mobile No:
+                <input type="number" name="empMobile" ng-model="selectedEmp.mobileno" ng-required="updateEmpForm.$visible">
+            </label> <br><br>
+            <label>
+                Designation:
+                <input type="text" name="empDesignation" ng-model="selectedEmp.designation" ng-required="updateEmpForm.$visible">
+            </label> <br><br>
+            <button type="submit" ng-click="toggleForm2(emp)">Update</button>
+
+        </form>
+    </div>
+
+    <br><br>
     <table>
         <thead>
             <tr>
@@ -33,22 +83,13 @@
                 <td>{{emp.mobileno}}</td>
                 <td>{{emp.designation}}</td>
                 <td>
-                    <button ng-click="updateclick(emp.id)">update</button>
+                    <button ng-click="toggleForm2(emp)">update</button>
                     <button ng-click="deleteclick(emp.id)">delete</button>
                 </td>
             </tr>
         </tbody>
     </table><br>
-===============================================================
-    <!-- <div ng-repeat="emp in employees">
-        emp  id:{{emp.id}} <br>
-        emp name:{{emp.empname}} <br>
-        emp location: {{emp.location}} <br>
-        emp mobile number:{{emp.mobileno}} <br>
-        emp designation: {{emp.designation}} <br><br>
-    </div>
-    {{employees[0].empname}} -->
-    <span ng-bind="message"></span>
+    ===============================================================
 </body>
 
 <script src="ajconnectsb.js"></script>
