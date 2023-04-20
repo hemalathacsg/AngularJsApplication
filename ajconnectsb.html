@@ -19,24 +19,39 @@
         <form name="empForm" ng-submit="addEmp(emp)" novalidate ng-show="addEmpForm">
             <label>
                 Name:
-                <input type="text" name="empName" ng-model="emp.empname" ng-required="empForm.$visible">
+                <input type="text" name="empName" ng-model="emp.empname" ng-required="true" ng-blur="empForm.empName.$dirty = true">
+                <span style="color: red;" ng-show="empForm.empName.$dirty && empForm.empName.$invalid">
+                    <span ng-show="empForm.empName.$error.required">Employee name is required</span>
+                </span>
             </label><br><br>
             <label>
                 Location:
-                <input type="text" name="empLocation" ng-model="emp.location" ng-required="empForm.$visible">
+                <input type="text" name="empLocation" ng-model="emp.location" ng-required="true" ng-blur="empForm.empLocation.$dirty = true">
+                <span style="color: red;" ng-show="empForm.empLocation.$dirty && empForm.empLocation.$invalid">
+                    <span ng-show="empForm.empLocation.$error.required">Employee Location is required</span>
+                </span>
             </label><br><br>
             <label>
                 Mobile No:
-                <input type="number" name="empMobile" ng-model="emp.mobileno" ng-required="empForm.$visible">
+                <input type="number" name="empMobile" ng-model="emp.mobileno" ng-required="true" ng-blur="empForm.empMobile.$dirty = true">
+                <span style="color: red;" ng-show="empForm.empMobile.$dirty && empForm.empMobile.$invalid">
+                    <span ng-show="empForm.empMobile.$error.required">Employee Mobile number is required</span>
+                </span>
             </label><br><br>
             <label>
                 Designation:
-                <input type="text" name="empDesignation" ng-model="emp.designation" ng-required="empForm.$visible">
+                <input type="text" name="empDesignation" ng-model="emp.designation" ng-required="true" ng-blur="empForm.empDesignation.$dirty = true">
+                <span style="color: red;" ng-show="empForm.empDesignation.$dirty && empForm.empDesignation.$invalid">
+                    <span ng-show="empForm.empDesignation.$error.required">Employee Designation is required</span>
+                </span>
             </label><br><br>
-            <button type="submit" ng-click="toggleForm1()">Submit</button>
+            <button type="submit" ng-click="toggleForm1()"
+                ng-disabled="empForm.empName.$dirty && empForm.empName.$invalid ||  
+            empForm.empLocation.$dirty && empForm.empLocation.$invalid ||  
+            empForm.empMobile.$dirty && empForm.empMobile.$invalid || empForm.empDesignation.$dirty && empForm.empDesignation.$invalid">Submit</button>
         </form>
-
     </div>
+
     <div>
         <form name="updateEmpForm" ng-submit="updateEmp(selectedEmp)" ng-show="myVar" id="myForm">
             <label>
