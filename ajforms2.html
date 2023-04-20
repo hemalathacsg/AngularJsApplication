@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"
+        integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="ajforms2.js"></script>
+</head>
+
+<body ng-controller="validateCtrl">
+    <h2>Validation Example</h2>
+    <form ng-app="myApp" ng-controller="validateCtrl" name="myForm" novalidate>
+        <table style="border: 1px solid gray; width: 500px;">
+            <tr>
+                <td colspan="2">
+                    <span style="color: red; padding-left:100px; border: 3px;">Log In </span>
+                </td>
+            </tr>
+            <br />
+            <tr>
+                <td>Username:
+                </td>
+                <td>
+                    <input type="text" name="user" ng-model="user" required>*
+                    <span style="color: red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+                        <span ng-show="myForm.user.$error.required">Username is required.</span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>Email:
+                </td>
+                <td>
+                    <input type="email" name="email" ng-model="email" required>*
+                    <span style="color: red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+                        <span ng-show="myForm.email.$error.required">Email is required.</span>
+                        <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>
+                        <input type="submit" ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||  
+myForm.email.$dirty && myForm.email.$invalid">
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

@@ -11,6 +11,7 @@
 </head>
 
 <body ng-controller="myController">
+
     <h1>data</h1>
     <button ng-click="toggleForm1()">add employee</button><br><br>
     <!-- Search: <input type="text"><br><br> -->
@@ -93,7 +94,16 @@
         </tbody>
     </table><br>
     ===============================================================
+    <form id="form1">
+        Select Name:
+        <select ng-model="selectedItem" ng-options="s.id as s.name for s in sample" ng-model="col">
+            <option value="">--Select--</option>
+        </select>
+        <p>selected item is: {{selectedItem}}</p>
+    </form>
 </body>
+
+
 
 <script src="ajconnectsb.js"></script>
 </body>

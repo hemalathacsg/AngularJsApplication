@@ -30,8 +30,8 @@ var myApp = angular.module("myModule", [])
             });
         };
 
-       //update employee details
-        $scope.toggleForm2 = function(emp) {
+        //update employee details
+        $scope.toggleForm2 = function (emp) {
             console.log("toggleForm2 function started");
             console.log(emp);
             $scope.myVar = !$scope.myVar;
@@ -43,12 +43,12 @@ var myApp = angular.module("myModule", [])
                 designation: ""
             };
             angular.copy(emp, $scope.selectedEmp);
-            
+
             console.log($scope.selectedEmp);
             console.log("toggleForm2 function ended");
         };
-        
-        
+
+
 
         $scope.updateEmp = function (selectedEmp) {
             console.log("updateEmp method entered");
@@ -67,16 +67,16 @@ var myApp = angular.module("myModule", [])
                 console.log("updateEmp method ended");
             });
         }
-        document.getElementById("submitBtn").addEventListener("click", function() {
+        document.getElementById("submitBtn").addEventListener("click", function () {
             document.getElementById("myForm").style.display = "none";
-          });
-          
-        
+        });
+
+
         //add an employee
-       $scope.addEmpForm=false;
-       $scope.toggleForm1=function(){
-        $scope.addEmpForm=!$scope.addEmpForm;
-       }
+        $scope.addEmpForm = false;
+        $scope.toggleForm1 = function () {
+            $scope.addEmpForm = !$scope.addEmpForm;
+        }
 
         $scope.addEmp = function (emp) {
             $http.post('http://localhost:8080/addEmp', emp, {
@@ -89,6 +89,34 @@ var myApp = angular.module("myModule", [])
                 console.log(error);
             });
         };
-
+        $scope.sample = [{
+            id: '1',
+            name: 'Bangalore'
+        }, {
+            id: '2',
+            name: 'Chennai'
+        }, {
+            id: '3',
+            name: 'Kolkata'
+        }, {
+            id: '4',
+            name: 'Mumbai'
+        }, {
+            id: '5',
+            name: 'Delhi'
+        }, {
+            id: '6',
+            name: 'Pune'
+        }];
+        
+        // myModule.config($routeProvider,function($routeProvider){
+        //     $routeProvider
+        //     .when('/first-mesg',{
+        //         template:'<strong>this is the first message</strong>'
+        //     })
+        //     .when('/second-mesg',{
+        //         template:'<i>this is the second message</i>'
+        //     })
+        // })
 
     });
