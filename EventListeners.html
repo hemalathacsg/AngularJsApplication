@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
-    <title>ajmain File</title>
+    <title>EventListeners</title>
     <style>
         .header {
             width: 100vw;
@@ -30,14 +30,14 @@
     </style>
 </head>
 
-<body ng-app="someModule2">
+<body ng-app="someModule1">
     <div class="header">
         <a href="#/!" style=" padding-right: 30px; text-decoration: none; font-weight: bold;">Home</a>
         <a href="#!firstTemp" style=" padding-right: 30px; text-decoration: none; font-weight: bold;">first Template</a>
-        <a href="#!second" style="text-decoration: none; font-weight: bold; padding-right: 30px; ">second Template</a>
-        <a href="#!third" style="text-decoration: none; font-weight: bold; padding-right: 30px; ">third template with controller</a>
+        <a href="#!second" style="text-decoration: none; font-weight: bold;">second Template</a>
+        <a href="#!third" style="text-decoration: none; font-weight: bold;"></a>
     </div>
-    <div ng-controller="myController2" class="centered">
+    <div ng-controller="myController1" class="centered">
         {{message}} <br><br><br>
         <form name="myForm" ng-submit="add(myForm)" novalidate>
             <label>
@@ -92,8 +92,8 @@
         @footer 2023
     </div>
     <script>
-        var app = angular.module('someModule2', ["ngRoute"]);
-        app.controller("myController2", function ($scope) {
+        var app = angular.module('someModule1', ["ngRoute"]);
+        app.controller("myController1", function ($scope) {
             $scope.isRadioSelected = function () {
                 return angular.isDefined($scope.selectedRadio) && $scope.selectedRadio !== null;
             };
@@ -117,120 +117,7 @@
                 .when("/second", {
                     templateUrl: "secondTemp.html"
                 })
-                .when("/third",{
-                    templateUrl:"ajconnectsb.html",
-                    controller:"ajconnectsbconttroller"
-                })
-        });
-        app.controller("ajconnectsbconttroller", function ($scope, $http) {
-        function getAllEmployees() {
-            $http.get('http://localhost:8080/getAllEmpList', {
-                withCredentials: true
-            }).then(function (response) {
-                $scope.employees = response.data;
-                console.log($scope.employees);
-            });
-        }
-        getAllEmployees();
-        // delete an employee
-        $scope.deleteclick = function (empId) {
-            $http.delete('http://localhost:8080/deleteEmp/' + empId, {
-                withCredentials: true
-            }).then(function (response) {
-                console.log(response);
-                getAllEmployees();
-                var index = $scope.employees.findIndex(function (e) {
-                    return e.id === empId;
-                });
-                if (index !== -1) {
-                    $scope.employees.splice(index, 1);
-                }
-            }, function (error) {
-                console.log(error);
-            });
-        };
-
-        //update employee details
-        $scope.toggleForm2 = function (emp) {
-            console.log("toggleForm2 function started");
-            console.log(emp);
-            $scope.myVar = !$scope.myVar;
-            $scope.selectedEmp = {
-                id: "",
-                empname: "",
-                location: "",
-                mobileno: "",
-                designation: ""
-            };
-            angular.copy(emp, $scope.selectedEmp);
-
-            console.log($scope.selectedEmp);
-            console.log("toggleForm2 function ended");
-        };
-
-
-
-        $scope.updateEmp = function (selectedEmp) {
-            console.log("updateEmp method entered");
-            console.log("emp details below");
-            console.log(selectedEmp);
-            $http.put('http://localhost:8080/updateEmp/' + selectedEmp.id, selectedEmp, {
-                withCredentials: true
-            }).then(function (response) {
-                console.log("updateEmp method successfull");
-                console.log(response);
-                getAllEmployees();
-                $scope.selectedEmp = null;
-                console.log("updateEmp method ended");
-            }, function (error) {
-                console.log(error);
-                console.log("updateEmp method ended");
-            });
-        }
-        document.getElementById("submitBtn").addEventListener("click", function () {
-            document.getElementById("myForm").style.display = "none";
-        });
-
-
-        //add an employee
-        $scope.addEmpForm = false;
-        $scope.toggleForm1 = function () {
-            $scope.addEmpForm = !$scope.addEmpForm;
-        }
-
-        $scope.addEmp = function (emp) {
-            $http.post('http://localhost:8080/addEmp', emp, {
-                withCredentials: true
-            }).then(function (response) {
-                console.log(response);
-                getAllEmployees();
-                $scope.emp = {}; // clear form after successful submit
-            }, function (error) {
-                console.log(error);
-            });
-        };
-        $scope.sample = [{
-            id: '1',
-            name: 'Bangalore'
-        }, {
-            id: '2',
-            name: 'Chennai'
-        }, {
-            id: '3',
-            name: 'Kolkata'
-        }, {
-            id: '4',
-            name: 'Mumbai'
-        }, {
-            id: '5',
-            name: 'Delhi'
-        }, {
-            id: '6',
-            name: 'Pune'
-        }];
-
-    });
-
+        })
     </script>
 </body>
 

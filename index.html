@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="indexModule">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,11 +9,8 @@
     <title>Main Routing Page</title>
     <link rel="stylesheet" href="style.css">
     <script src="index.js"></script>
-    <script src="templates/home.js"></script>
-    <script src="templates/course.js"></script>
-    <script src="templates/faculty.js"></script>
 </head>
-<body>
+<body ng-app="indexModule">
     <table style="font-family: Arial, Helvetica, sans-serif;">
         <tr>
             <td colspan="2" class="header">
@@ -24,12 +21,12 @@
         </tr>
         <tr>
             <td class="leftMenu">
-                <a href="#/home">Home</a>
-                <a href="#/courses">Courses</a>
-                <a href="#/faculty">Faculty</a>
+                <a href="#/!">Home</a>
+                <a href="#/!courses">Courses</a>
+                <a href="#/!faculty">Faculty</a>
         </td>
         <td class="mainContent">
-            <ng-view></ng-view>
+            <div ng-view></div>
         </td>
     </tr>
     <tr>

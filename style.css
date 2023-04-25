@@ -1,21 +1,27 @@
+body{
+    height:100vh;
+    width:100vw;
+}
 .header{
-    width:800px;
+    width:100vw;
     height:80px;
     text-align:center;
-    backgroung-color:#BDBDBD;
+    background-color:#BDBDBD;
 }
 .footer{
+    width:100vw;
     background-color:#BDBDBD;
     text-align:center;
+    position: absolute;
+    bottom: 0;
 }
 .leftMenu{
-    height:500px;
+    height:100%;
     background-color:#D8D8D8;
 }
 .mainContent{
-    height:500px;
-    background-color:#E6E6E6;
-    width:650px;
+    background-color:pink;
+    width:100%;
 }
 a{
     display:block;
