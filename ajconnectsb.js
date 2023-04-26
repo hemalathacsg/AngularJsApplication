@@ -27,7 +27,6 @@ var myApp = angular.module("myModule", [])
             });
         };
 
-        //update employee details
         $scope.toggleForm2 = function (emp) {
             console.log("toggleForm2 function started");
             console.log(emp);
@@ -46,6 +45,7 @@ var myApp = angular.module("myModule", [])
         };
 
 
+        //update employee details
 
         $scope.updateEmp = function (selectedEmp) {
             console.log("updateEmp method entered");
